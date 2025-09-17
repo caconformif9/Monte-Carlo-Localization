@@ -4,7 +4,7 @@ A lightweight simulator of **Monte Carlo Localization (MCL)** with **LIDAR-style
 Built in modern C++ and SFML, it’s designed for **experimentation**, **teaching**, and **rapid prototyping** of probabilistic robotics.
 
 > **Core idea:** given noisy odometry and range measurements, maintain a cloud of weighted particles to estimate robot pose in a known map.  
-> We simulate the range sensor via GPU-friendly ray casting.
+> I simulate the range sensor via GPU-friendly ray casting.
 
 ---
 
