@@ -10,7 +10,7 @@ int main() {
     Environment Env;
     Robot Karl;
     float fov = 360.f;
-    float beams_num = 90.f;
+    float beams_num = 120.f;
     
     std::cout << "---Control--- \n\n";
     std::cout << "- Robot movement:\n A - turn left   D - turn right   W - go forawrd   S - go backward    Backspace - reset robot posiition in case of colison\n\n";

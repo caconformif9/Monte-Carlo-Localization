@@ -28,6 +28,7 @@ void Robot::control(sf::Event& event) {
 		//distrubutes one half randomly
 		if (event.key.code == sf::Keyboard::R) {
 			rescue();
+			resampled = true;
 		}
 
 		if (event.key.code == sf::Keyboard::L) {
@@ -303,22 +304,24 @@ void Robot::updateWeights() {
 			particles[j].w = 1 / (errors_sum + eps);
 			w_sum += particles[j].w;
 		}
-		int i = 0;
 		for (auto& it : particles) {
-			i++;
 			it.w /= w_sum;
 			//std::cout << i << ". " << it.w << "\n";
 		}
+		w_sum = 0;
+		for (auto& it : particles) {
+			w_sum += it.w;
+		}
+		std::cout << w_sum << "\n";
 	}
 }
 
 
 void Robot::MCL (sf::RenderWindow & window, Environment & env, float fov, float beams_num) {
-	
+
 	//get Ranges + security check
 	//MCL only on if the robot doesnt move - saves comp. power for  robot move
 	if (!moveDetection) {
-
 		getRanges(env, fov, beams_num);
 
 		std::cout << "Lidar " << lidar_data.size();
@@ -334,17 +337,22 @@ void Robot::MCL (sf::RenderWindow & window, Environment & env, float fov, float 
 
 		//updateWeights
 		updateWeights();
+		epochs++;
+		//save data
+		saveEffN(epochs, EffN());
+
 		//resample
 		resampleMultinomial();
-		
+
 		//colony noise
 		colonyNoise();
-		
+
 		//draw
 		drawParticles(window);
 
 		//if (drawParticlesLidar) drawParticlesLidars(window, fov, beams_num);
 	}
+	
 }
 
 void Robot::rescue() {
@@ -390,4 +398,41 @@ void Robot::colonyNoise() {
 		particles[i].circle_.setPosition(position_);
 		particles[i].circle_.setRotation(rotation_);
 	}
+}
+
+
+double Robot::EffN() {
+	float EffN = 0;
+	for (auto& it : particles) {
+		EffN += it.w * it.w;
+	}
+	return 1 / (EffN + eps);
+}
+
+bool Robot::saveEffN(int epoch, double EffN) {
+	if (!effn_log) return false;
+	effn_log << epoch;
+	effn_log << ",";
+	effn_log << EffN;
+	effn_log << ",";
+
+	if (moved) {
+		effn_log << 1;
+		moved = false;
+	}
+	else {
+		effn_log << 0;
+	}
+	effn_log << ",";
+
+	if (resampled) {
+		effn_log << 1;
+		resampled = false;
+	}
+	else {
+		effn_log << 0;
+	}
+	effn_log << "\n";
+
+	return true;
 }

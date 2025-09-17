@@ -43,7 +43,7 @@ private:
 	};
 
 	std::vector<Particle> particles;
-	int particles_num = 12000;
+	int particles_num = 2500;
 	
 	int epochs = 0;
 
@@ -53,13 +53,16 @@ private:
 
 	bool killSwitch = false;  //disables robot action
 	bool moveDetection = false;
+	bool moved = false;
 	std::chrono::steady_clock::time_point idleStart;
+
 	std::vector<float> lidar_data;
 	bool lidar_data_saved = true;
-
+	bool resampled = false;
 	bool drawRobotLidar = true;
 	bool drawParticlesLidar = false;
-
+	
+	std::fstream effn_log;
 
 public:
 	Robot():circle(8.0f) {
@@ -72,6 +75,7 @@ public:
 
 		setRotation();
 
+		effn_log.open("C:/Users/alber/Desktop/MC_localization/data/EffN.csv", std::ios::out | std::ios::trunc);
 		srand(static_cast<unsigned>(time(nullptr)));
 
 		particles.reserve(particles_num);
@@ -81,6 +85,9 @@ public:
 		}
 	}
 
+	~Robot() {
+		if (effn_log) effn_log.close();
+	}
 
 	void turn(float deg) {
 		circle.setRotation(rotation + deg);
@@ -116,6 +123,7 @@ public:
 	void detectMove() {
 		using clock = std::chrono::steady_clock;
 		moveDetection = true;
+		moved = true;
 		lidar_data_saved = false;
 		lidar_data.clear();
 		idleStart = clock::now();
@@ -145,6 +153,10 @@ public:
 	void colonyNoise();
 	
 	void MCL(sf::RenderWindow& window, Environment& env, float fov, float beams_num);
+	
+	double EffN();
+
+	bool saveEffN(int epoch, double EffN);
 
 };
 
