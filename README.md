@@ -25,8 +25,8 @@ Built in modern C++ and SFML, it’s designed for **experimentation**, **teachin
 
 ![MCL_1](https://github.com/user-attachments/assets/0b055c1b-c84b-4d24-931c-8d2071dfb243)
 
-![MC2025-09-1716-08-07-ezgif com-resize](https://github.com/user-attachments/assets/b6243dd1-edcc-48a0-807a-3bc19fd626e4)
 
+![ezgif com-optimize](https://github.com/user-attachments/assets/72b83c86-4da3-4ed5-9bf5-aad72a386950)
 
 
 ## 🧮 Methodology
