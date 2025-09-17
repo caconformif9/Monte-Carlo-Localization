@@ -18,16 +18,29 @@ Built in modern C++ and SFML, it’s designed for **experimentation**, **teachin
 - Extensible modular code: `Environment`, `Robot`, `Particle`, `main loop`  
 
 **Methodology section below screenshots**
+
 ---
 
-**Animations and screenchots**
+##  Animations and screenchots
 
+
+>Figure 1 - Robot being efectivly localized after every move. (2500 particles, 360 deg fov, 90 lidar beams, robot lidar rays viusalisation on and off)
 
 ![MCL_1](https://github.com/user-attachments/assets/0b055c1b-c84b-4d24-931c-8d2071dfb243)
 
+---
+
+>Figure 2 - using `rescue()` funcion to apply some randomness to already existing particles (12000 particles, 360 deg fov, 90 lidar beams)
 
 ![ezgif com-optimize](https://github.com/user-attachments/assets/72b83c86-4da3-4ed5-9bf5-aad72a386950)
 
+---
+
+>Figure 3 - raycasting used in robot lidar, rays detect nearest obstacle and return the distance, simulating real life lidar (2500 particles, 360 deg fov, 120 lidar beams)
+
+![MC2025-09-1720-27-13-ezgif com-optimize](https://github.com/user-attachments/assets/91f5be7d-8f09-43c9-9e35-438a9e2e398d)
+
+---
 
 ## 🧮 Methodology
 
