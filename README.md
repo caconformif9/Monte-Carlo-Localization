@@ -44,9 +44,17 @@ Built in modern C++ and SFML, it’s designed for **experimentation**, **teachin
 
 ---
 
->Figure 4 - effective sample size over epochs chart, caunting EffN for each epoch, saving the result to csv and plotting in Matplotlib. We can notice how robot movement and manual particle resamplment influences EffN with high values depicting low accuracy and low values showing accurate results 
+>Figure 4 and 5 - effective sample size over epochs charts, caunting EffN for each epoch, saving the result to csv and plotting in Matplotlib. We can notice how robot movement and manual particle resamplment influences EffN with high values depicting low accuracy and low values showing accurate results 
 
 <img width="968" height="512" alt="EffN_over_epochs" src="https://github.com/user-attachments/assets/88283e5f-28db-40ba-9c75-36a0b6bf451e" />
+
+<img width="1024" height="554" alt="EffN_over_epochs_2" src="https://github.com/user-attachments/assets/09daafc5-9cbe-4618-85e3-3fbe176224aa" />
+
+---
+
+>Figure 6 - EffN histogram, showing distribution of EffN over epochs
+
+<img width="900" height="400" alt="EffN_hist" src="https://github.com/user-attachments/assets/ca188948-1c9a-4657-a688-3dbe699a48a3" />
 
 ---
 
@@ -99,11 +107,9 @@ To prevent continuous sampling, the LIDAR:
 ---
 
 ###  Data Analysis
-- After each iteration, the simulator computes the **Effective Sample Size (EffN)**:  
-  \[
-  N_{\text{eff}} = \frac{1}{\sum_j \tilde{w}_j^2}
-  \]
-  where \( \tilde{w}_j \) are normalized particle weights.  
+- After each iteration, the simulator computes the **Effective Sample Size (EffN)**:
+EffN = 1 / Σ ( w_j² )
+where w_j are the normalized particle weights 
 
 - EffN measures how well the particle population approximates the true posterior.  
 - Logged to CSV and later processed in **Python with Matplotlib** to generate performance charts.  
@@ -116,8 +122,7 @@ To prevent continuous sampling, the LIDAR:
 - Gaussian motion noise for realistic odometry models.  
 - Improved likelihood model (Gaussian error instead of absolute difference).  
 - Low-variance/systematic resampling for better stability.  
-- Config file for easy parameter tuning.  
-- SLAM extension (map building + localization).  
+- Config file for easy parameter tuning.    
 
 ---
 
