@@ -7,7 +7,6 @@ print("Working dir: ", os.getcwd())
 # Wczytanie CSV
 effn_log = pd.read_csv("EffN.csv")
 
-# Histogram wartości EffN
 plt.figure(figsize=(8,5))
 y = effn_log.to_numpy()[:,1]
 plt.hist(y, bins=30, color="tab:blue", edgecolor="black", alpha=0.7)
