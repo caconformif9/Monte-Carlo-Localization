@@ -1,41 +1,31 @@
-import os
-import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
+import os
 
-
-os.chdir(r"C:\Users\alber\Desktop\MC_localization\data")   #make sure you cvhange the warking dir to data dir
+os.chdir(r"MC_localization\data")   #make sure you change the working dir to your data dir 
 print("Working dir: ", os.getcwd())
 
-effn_log = pd.read_csv("EffN.csv")
-print(effn_log.notna()) #if numbers continue
-print(effn_log.head())
-effn_log = effn_log.to_numpy()
 
-x = effn_log[:,0]
-y = effn_log[:,1]
-movement_flag = effn_log[:,2]  
-resampled_flag = effn_log[:,3]
+df = pd.read_csv("EffN.csv", sep=None, engine="python", header=None)
+
+names = {2:["epoch","EffN"], 3:["epoch","EffN","moved"], 4:["epoch","EffN","moved","resampled"]}
+df.columns = names.get(df.shape[1], [f"col{i}" for i in range(df.shape[1])])
 
 
-mask_m = movement_flag == 1
-mask_r = resampled_flag == 1
+for c in df.columns:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+df = df.dropna(subset=["epoch","EffN"])
 
+x = df["epoch"].to_numpy()
+y = df["EffN"].to_numpy()
+moved = df["moved"].to_numpy() if "moved" in df else None
+resampled = df["resampled"].to_numpy() if "resampled" in df else None
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12,5))
-
-ax1.hist(y, bins=30, color="tab:blue", edgecolor="black", alpha=0.7)
-ax1.set_xlabel("EffN")
-ax1.set_ylabel("Frequency")
-ax1.set_title("Histogram EffN ")
-ax1.grid(alpha=0.3)
-
-
-ax2.hist(y[mask_r], bins=20, alpha=0.7, label="Resampled", color="red", edgecolor="black")
-ax2.hist(y[~mask_r], bins=20, alpha=0.7, label="Not resampled", color="tab:blue", edgecolor="black")
-ax2.set_xlabel("EffN")
-ax2.set_title("Resampled / not resampled")
-ax2.legend()
-ax2.grid(alpha=0.3)
-
+plt.figure(figsize=(9,4))
+plt.hist(y, bins=30, edgecolor="black", alpha=.75)
+plt.xlabel("EffN")
+plt.ylabel("Frequency")
+plt.title("Histogram EffN")
+plt.grid(True, alpha=.3)
 plt.tight_layout()
 plt.show()
